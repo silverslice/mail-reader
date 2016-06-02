@@ -8,7 +8,7 @@ class MailReader
 {
     protected $mailPath;
 
-    public function __construct($mailPath) 
+    public function __construct($mailPath)
     {
         $this->mailPath = rtrim($mailPath, '/');
     }
@@ -17,7 +17,7 @@ class MailReader
     {
         $file = $this->getLastFileByIndex($index);
         if (!$file) {
-            return false;
+            throw new Exception('Message not found');
         }
 
         $parser = new MailMimeParser();
@@ -38,7 +38,7 @@ class MailReader
         return count(glob($this->mailPath . '/*.eml'));
     }
 
-    public function clearMessages() 
+    public function clearMessages()
     {
         foreach (glob($this->mailPath . '/*.eml') as $filename) {
             unlink($filename);

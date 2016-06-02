@@ -2,6 +2,7 @@
 
 namespace Silverslice\MailReader\Tests;
 
+use Silverslice\MailReader\Exception;
 use Silverslice\MailReader\MailReader;
 use Symfony\Component\Filesystem\Filesystem;
 
@@ -10,12 +11,12 @@ class MailReaderTest extends \PHPUnit_Framework_TestCase
     /** @var  MailReader */
     protected $reader;
     
-    public function setUp() 
+    public function setUp()
     {
         $this->reader = new MailReader(__DIR__ . '/mails/');
     }
     
-    public function testGetLastMessage() 
+    public function testGetLastMessage()
     {
         $message = $this->reader->getLastMessage();
         
@@ -33,6 +34,14 @@ class MailReaderTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('toemail@mail.dev', $message->getTo());
         $this->assertEquals('First email', $message->getSubject());
         $this->assertContains('This is the <strong>first</strong> email', $message->getBody());
+    }
+
+    /**
+     * @expectedException Exception
+     */
+    public function testMessageNotFound()
+    {
+        $this->reader->getLastMessageByIndex(10);
     }
 
     public function testClearMessages()
