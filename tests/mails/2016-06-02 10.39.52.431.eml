@@ -1,0 +1,14 @@
+To: Nick <toemail@mail.dev>
+Subject: Second email
+X-PHP-Originating-Script: 1000:class.phpmailer.php
+Date: Thu, 2 Jun 2016 00:39:52 +0000
+From: Bob <fromemail@mail.dev>
+Message-ID: <ec73f5b6b5b01f0b95a6698f7c169038@dobr>
+X-Priority: 3
+X-Mailer: PHPMailer 5.2.9 (https://github.com/PHPMailer/PHPMailer/)
+MIME-Version: 1.0
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+<p>This is the <strong>second</strong> email.</p>
+
