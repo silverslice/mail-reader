@@ -2,6 +2,8 @@
 
 namespace Silverslice\MailReader;
 
+use ZBateson\MailMimeParser\Header\Part\ParameterPart;
+
 class Message
 {
     protected $message;
@@ -37,5 +39,31 @@ class Message
         }
         
         return $this->body;
+    }
+
+    public function hasAttachment()
+    {
+        $parts = $this->message->getAllAttachmentParts();
+        foreach ($parts as $part) {
+            $filename = $part->getHeaderParameter('Content-Type', 'name');
+            if ($filename !== null) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+
+    public function hasAttachmentWithName($name)
+    {
+        $parts = $this->message->getAllAttachmentParts();
+        foreach ($parts as $part) {
+            $filename = $part->getHeaderParameter('Content-Type', 'name');
+            if ($filename == $name) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

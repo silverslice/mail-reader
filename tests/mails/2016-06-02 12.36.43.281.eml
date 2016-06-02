@@ -1,0 +1,41 @@
+To: Nick <toemail@mail.dev>
+Subject: Third email
+X-PHP-Originating-Script: 1000:class.phpmailer.php
+Date: Thu, 2 Jun 2016 02:36:43 +0000
+From: Bob <fromemail@mail.dev>
+Message-ID: <754e6685f30b1ef31d016a76417bf7d1@dobr>
+X-Priority: 3
+X-Mailer: PHPMailer 5.2.9 (https://github.com/PHPMailer/PHPMailer/)
+MIME-Version: 1.0
+Content-Type: multipart/mixed;
+	boundary="b1_754e6685f30b1ef31d016a76417bf7d1"
+Content-Transfer-Encoding: 8bit
+
+--b1_754e6685f30b1ef31d016a76417bf7d1
+Content-Type: text/html; charset=us-ascii
+
+<p>This is the <strong>third</strong> email.</p>
+
+
+--b1_754e6685f30b1ef31d016a76417bf7d1
+Content-Type: application/octet-stream; name="file1.txt"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename=file1.txt
+
+Kn4KVGh1bWJzLmRiCi5pZGVhLwoKL2FwcC9jb25maWdfZGV2LnBocAovYXBwL2NvbmZpZ19wcm9k
+LnBocAoKL2xvY2FsCi81MDMKCnVwbG9hZHMvCi92ZW5kb3IvCi9zaXRlbWFwLnhtbApjb21wb3Nl
+ci5waGFy
+
+
+--b1_754e6685f30b1ef31d016a76417bf7d1
+Content-Type: application/octet-stream; name="file2.txt"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename=file2.txt
+
+Kn4KVGh1bWJzLmRiCi5pZGVhLwoKL2FwcC9jb25maWdfZGV2LnBocAovYXBwL2NvbmZpZ19wcm9k
+LnBocAoKL2xvY2FsCi81MDMKCnVwbG9hZHMvCi92ZW5kb3IvCi9zaXRlbWFwLnhtbApjb21wb3Nl
+ci5waGFy
+
+
+--b1_754e6685f30b1ef31d016a76417bf7d1--
+

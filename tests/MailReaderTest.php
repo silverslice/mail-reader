@@ -36,6 +36,19 @@ class MailReaderTest extends \PHPUnit_Framework_TestCase
         $this->assertContains('This is the <strong>first</strong> email', $message->getBody());
     }
 
+    public function testLastMessageHasAttachment()
+    {
+        $message = $this->reader->getLastMessage();
+
+        $this->assertTrue($message->hasAttachment());
+        $this->assertTrue($message->hasAttachmentWithName('file1.txt'));
+        $this->assertTrue($message->hasAttachmentWithName('file2.txt'));
+        $this->assertFalse($message->hasAttachmentWithName('test.txt'));
+
+        $message2 = $this->reader->getLastMessageByIndex(1);
+        $this->assertFalse($message2->hasAttachment());
+    }
+
     /**
      * @expectedException Exception
      */
