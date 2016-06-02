@@ -1,6 +1,8 @@
 Test emails easily in php
 ============================================================
 
+[![Coverage Status](https://coveralls.io/repos/github/silverslice/mail-reader/badge.svg?branch=master)](https://coveralls.io/github/silverslice/mail-reader?branch=master)
+
 Without mailcatcher headache:)
 
 **MailReader** stores your emails in local directory and provides convenient way to test them.
