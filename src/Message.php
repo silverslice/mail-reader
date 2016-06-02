@@ -8,12 +8,12 @@ class Message
     
     protected $body;
     
-    public function __construct(\ZBateson\MailMimeParser\Message $message) 
+    public function __construct(\ZBateson\MailMimeParser\Message $message)
     {
         $this->message = $message;
     }
 
-    public function getFrom() 
+    public function getFrom()
     {
         return $this->message->getHeaderValue('from');
     }
@@ -28,7 +28,7 @@ class Message
         return $this->message->getHeaderValue('subject');
     }
 
-    public function getBody() 
+    public function getBody()
     {
         if ($this->body === null) {
             $htmlHandle = $this->message->getHtmlStream();
