@@ -38,10 +38,10 @@ public function testGetLastMessage()
     $this->assertTrue($message->hasAttachmentWithName('file1.txt'));
 
     // get total count of messages
-    $reader->getCountOfMessages();
+    $count = $reader->getCountOfMessages();
 
     // get next to the last message
-    $reader->getLastMessageByIndex(1);
+    $prevMessage = $reader->getLastMessageByIndex(1);
 
     // clear all messages
     $reader->clearMessages();
