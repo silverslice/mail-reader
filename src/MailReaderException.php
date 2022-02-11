@@ -2,7 +2,7 @@
 
 namespace Silverslice\MailReader;
 
-class Exception extends \Exception
+class MailReaderException extends \Exception
 {
 
 }

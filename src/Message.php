@@ -2,13 +2,9 @@
 
 namespace Silverslice\MailReader;
 
-use ZBateson\MailMimeParser\Header\Part\ParameterPart;
-
 class Message
 {
     protected $message;
-    
-    protected $body;
     
     public function __construct(\ZBateson\MailMimeParser\Message $message)
     {
@@ -32,13 +28,7 @@ class Message
 
     public function getBody()
     {
-        if ($this->body === null) {
-            $htmlHandle = $this->message->getHtmlStream();
-
-            $this->body = stream_get_contents($htmlHandle);
-        }
-        
-        return $this->body;
+        return $this->message->getHtmlContent();
     }
 
     public function hasAttachment()

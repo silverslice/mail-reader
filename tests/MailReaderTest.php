@@ -2,16 +2,17 @@
 
 namespace Silverslice\MailReader\Tests;
 
-use Silverslice\MailReader\Exception;
+use PHPUnit\Framework\TestCase;
+use Silverslice\MailReader\MailReaderException;
 use Silverslice\MailReader\MailReader;
 use Symfony\Component\Filesystem\Filesystem;
 
-class MailReaderTest extends \PHPUnit_Framework_TestCase
+class MailReaderTest extends TestCase
 {
     /** @var  MailReader */
     protected $reader;
     
-    public function setUp()
+    public function setUp(): void
     {
         $this->reader = new MailReader(__DIR__ . '/mails/');
     }
@@ -23,7 +24,7 @@ class MailReaderTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('fromemail@mail.dev', $message->getFrom());
         $this->assertEquals('toemail@mail.dev', $message->getTo());
         $this->assertEquals('Third email', $message->getSubject());
-        $this->assertContains('This is the <strong>third</strong> email', $message->getBody());
+        $this->assertStringContainsString('This is the <strong>third</strong> email', $message->getBody());
     }
 
     public function testGetLastMessageByIndex()
@@ -33,7 +34,7 @@ class MailReaderTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('fromemail@mail.dev', $message->getFrom());
         $this->assertEquals('toemail@mail.dev', $message->getTo());
         $this->assertEquals('First email', $message->getSubject());
-        $this->assertContains('This is the <strong>first</strong> email', $message->getBody());
+        $this->assertStringContainsString('This is the <strong>first</strong> email', $message->getBody());
     }
 
     public function testLastMessageHasAttachment()
@@ -49,11 +50,9 @@ class MailReaderTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($message2->hasAttachment());
     }
 
-    /**
-     * @expectedException Exception
-     */
     public function testMessageNotFound()
     {
+        $this->expectException(MailReaderException::class);
         $this->reader->getLastMessageByIndex(10);
     }
 

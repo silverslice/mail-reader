@@ -13,17 +13,16 @@ class MailReader
         $this->mailPath = rtrim($mailPath, '/');
     }
 
-    public function getLastMessageByIndex($index)
+    public function getLastMessageByIndex($index): Message
     {
         $file = $this->getLastFileByIndex($index);
         if (!$file) {
-            throw new Exception('Message not found');
+            throw new MailReaderException('Message not found');
         }
 
         $parser = new MailMimeParser();
         $handle = fopen($this->mailPath . '/' . $file, 'r');
-        $message = $parser->parse($handle);
-        fclose($handle);
+        $message = $parser->parse($handle, true);
 
         return new Message($message);
     }
@@ -49,6 +48,6 @@ class MailReader
     {
         $files = scandir($this->mailPath, SCANDIR_SORT_DESCENDING);
 
-        return isset($files[$index]) ? $files[$index] : false;
+        return $files[$index] ?? false;
     }
 }

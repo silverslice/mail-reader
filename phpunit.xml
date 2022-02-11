@@ -8,12 +8,12 @@
             <directory>./tests</directory>
         </testsuite>
     </testsuites>
-    <filter>
-        <whitelist>
+    <coverage>
+        <include>
             <directory suffix=".php">./src</directory>
-        </whitelist>
-        <blacklist>
+        </include>
+        <exclude>
             <directory suffix=".php">./vendor</directory>
-        </blacklist>
-    </filter>
+        </exclude>
+    </coverage>
 </phpunit>
